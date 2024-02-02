@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDo.Pages.Home"
+             Title="Home">
+    <Grid RowDefinitions="auto,*,auto,100,auto" HorizontalOptions="Center">
+        <Label Margin="0,50,0,0" Text="To Do" FontFamily="Pattaya-Regular" Grid.Row="0" FontSize="40" FontAttributes="Bold" HorizontalOptions="Center" />
+        <CollectionView Grid.Row="1" x:Name="TaskList"
+            ItemsSource="{Binding Tasks}" VerticalScrollBarVisibility="Always">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalOptions="Center" Padding="20" ColumnDefinitions="50,10,200,10,50" RowDefinitions="auto,*">
+                        <ImageButton HorizontalOptions="Start" Clicked="DoneButton_Clicked" Grid.Column="0" Grid.RowSpan="2"   Source="done.png" Background="Transparent" BorderWidth="0"  HeightRequest="40"></ImageButton>
+                        <Label Text="{Binding Description}" Grid.Column="2" Grid.Row="0"  LineBreakMode="WordWrap" VerticalOptions="Center" />
+
+                        <Label Text="{Binding StartDate}"  Grid.Column="2" Grid.Row="1" VerticalOptions="Center"  LineBreakMode="WordWrap"  />
+
+                        <ImageButton Clicked="EditButton_Clicked" HeightRequest="40"  Grid.Column="4" Grid.RowSpan="2"   Source="edit.png" Background="Transparent" BorderWidth="0"></ImageButton>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid ColumnDefinitions="*,*" Grid.Row="2">
+            <DatePicker Grid.Column="0" Date="{Binding StartDate}" ></DatePicker>
+            <TimePicker Grid.Column="1" Time="{Binding StartTime}" ></TimePicker>
+        </Grid>
+        <HorizontalStackLayout Margin="0,15,0,15" Grid.Row="3" Spacing="10" HorizontalOptions="Center"  >
+            <Editor  Text="{Binding Description}" WidthRequest="260" x:Name="descriptionInput"  >
+            </Editor>
+            <Button Clicked="AddButton_Clicked" VerticalOptions="Start" BorderWidth="0"  HeightRequest="40"  Text="Add" TextColor="White" BackgroundColor="#1d4ed8" ></Button>
+        </HorizontalStackLayout>
+
+        
+    </Grid>
+</ContentPage>

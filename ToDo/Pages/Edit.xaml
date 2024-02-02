@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDo.Pages.Edit"
+             Title="Edit">
+    <Grid HorizontalOptions="Center" RowDefinitions="auto,10,100,10,auto,10,auto,50,auto" ColumnDefinitions="100,250">
+        <Label Margin="0,50,0,0" Text="To Do" Grid.ColumnSpan="2" FontFamily="Pattaya-Regular" Grid.Row="0" FontSize="40" FontAttributes="Bold" HorizontalOptions="Center" />
+        
+        <Label Text="Description :" Grid.Column="0" Grid.Row="2"></Label>
+        <Editor Grid.Column="1" Grid.Row="2" Text="{Binding Description}" ></Editor>
+        
+        <Label VerticalOptions="Center" Text="Date :" Grid.Column="0" Grid.Row="4"></Label>
+        <DatePicker Grid.Row="4" Grid.Column="1" Date="{Binding StartDate}"></DatePicker>
+        
+        <Label Text="Time :" Grid.Column="0" Grid.Row="6"></Label>
+        <TimePicker  Grid.Row="6" Grid.Column="1" Time="{Binding StartTime}"></TimePicker>
+        <Button Clicked="SubmitButton_Clicked" Text="Submit" Grid.Row="8" Grid.Column="1" WidthRequest="100" BackgroundColor="#1d4ed8" TextColor="White"></Button>
+    </Grid>
+</ContentPage>
